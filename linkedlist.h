@@ -2,6 +2,7 @@
 struct Node {                                      
    int data; // each listNode contains a character 
    struct Node *nextPtr; // pointer to next node
+   struct Node *prevPtr; // pointer to next previous node
 }; // end structure listNode                        
 // prototypes
 
@@ -9,10 +10,11 @@ typedef struct Node LLnode; // synonym for struct listNode
 typedef LLnode *LLPtr; // synonym for ListNode*
 
 
-int deletes( LLPtr *sPtr, int value );
+int deletes( LLPtr *sPtr, int value );//change
 int isEmpty( LLPtr sPtr );
-void insert( LLPtr *sPtr, int value );
+void insert( LLPtr *sPtr, int value ); //change
 void printList( LLPtr currentPtr );
+void printListR( LLPtr currentPtr );
 void instructions( void );
 
 
@@ -125,3 +127,22 @@ void printList( LLPtr currentPtr )
       puts( "NULL\n" );
    } // end else
 } // end function printList
+
+void printListR( LLPtr currentPtr )
+{ 
+   // if list is empty
+   if ( isEmpty( currentPtr ) ) {
+      puts( "List is empty.\n" );
+   } // end if
+   else { 
+      puts( "The list is:" );
+
+      // while not the end of the list
+      while ( currentPtr != NULL ) { 
+         printf( "%d --> ", currentPtr->data );
+         currentPtr = currentPtr->nextPtr;   
+      } // end while
+
+      puts( "NULL\n" );
+   } // end else
+} // end function printListR
